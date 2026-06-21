@@ -133,7 +133,10 @@ class _DetailViewState extends ConsumerState<_DetailView> {
         ),
         decoration: InputDecoration(
           hintText: 'Напишите заметку в Markdown...',
-          hintStyle: TextStyle(color: colorScheme.onSurfaceVariant),
+          hintStyle: TextStyle(
+            color: colorScheme.onSurfaceVariant,
+            fontFamily: 'Unbounded',
+          ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: BorderSide(color: colorScheme.outlineVariant),

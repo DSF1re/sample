@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:todo/core/providers/theme/theme_provider.dart';
 import 'package:todo/core/router/router.dart';
@@ -14,21 +13,19 @@ class App extends ConsumerWidget {
     final colorIndex = ref.watch(colorIndexProvider);
     final seedColor = seedColors[colorIndex];
 
-    final textTheme = GoogleFonts.unboundedTextTheme();
-
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorSchemeSeed: seedColor,
         brightness: Brightness.light,
         useMaterial3: true,
-        textTheme: textTheme,
+        fontFamily: 'Unbounded',
       ),
       darkTheme: ThemeData(
         colorSchemeSeed: seedColor,
         brightness: Brightness.dark,
         useMaterial3: true,
-        textTheme: textTheme,
+        fontFamily: 'Unbounded',
       ),
       themeMode: themeMode,
       routerConfig: router,
