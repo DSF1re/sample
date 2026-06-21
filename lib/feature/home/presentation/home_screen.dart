@@ -3,8 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:todo/core/providers/todo/todo_provider.dart';
 import 'package:todo/feature/settings/presentation/settings_screen.dart';
-import 'package:todo/widgets/todo_tile.dart';
 import 'package:todo/widgets/empty_state.dart';
+import 'package:todo/widgets/todo_tile.dart';
 import 'package:todo/widgets/theme_button.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
