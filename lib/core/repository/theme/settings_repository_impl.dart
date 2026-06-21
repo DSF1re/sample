@@ -6,13 +6,23 @@ class SettingsRepositoryImpl implements SettingsRepository {
   SettingsRepositoryImpl({required this.prefs});
   final SharedPreferences prefs;
 
-  @override
-  bool get isDarkMode => prefs.getBool('is_dark_mode') ?? false;
+  static const _modeKey = 'theme_mode';
+  static const _colorKey = 'color_index';
 
   @override
-  ThemeMode toggleThemeMode() {
-    final newValue = !isDarkMode;
-    prefs.setBool('is_dark_mode', newValue);
-    return newValue ? ThemeMode.dark : ThemeMode.light;
+  ThemeMode get themeMode =>
+      ThemeMode.values[prefs.getInt(_modeKey) ?? ThemeMode.system.index];
+
+  @override
+  Future<void> setThemeMode(ThemeMode mode) async {
+    await prefs.setInt(_modeKey, mode.index);
+  }
+
+  @override
+  int get colorIndex => prefs.getInt(_colorKey) ?? 0;
+
+  @override
+  Future<void> setColorIndex(int index) async {
+    await prefs.setInt(_colorKey, index);
   }
 }

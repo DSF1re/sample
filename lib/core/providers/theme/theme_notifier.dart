@@ -13,11 +13,32 @@ class ThemeNotifier extends Notifier<ThemeMode> {
   @override
   ThemeMode build() {
     final repo = ref.watch(settingsRepositoryProvider);
-    return repo.isDarkMode ? ThemeMode.dark : ThemeMode.light;
+    return repo.themeMode;
   }
 
-  void toggleTheme() {
+  Future<void> setThemeMode(ThemeMode mode) async {
     final repo = ref.read(settingsRepositoryProvider);
-    state = repo.toggleThemeMode();
+    await repo.setThemeMode(mode);
+    state = mode;
+  }
+
+  Future<void> toggleTheme() async {
+    final modes = [ThemeMode.light, ThemeMode.dark, ThemeMode.system];
+    final nextIndex = (state.index + 1) % modes.length;
+    await setThemeMode(modes[nextIndex]);
+  }
+}
+
+class ColorNotifier extends Notifier<int> {
+  @override
+  int build() {
+    final repo = ref.watch(settingsRepositoryProvider);
+    return repo.colorIndex;
+  }
+
+  Future<void> setColorIndex(int index) async {
+    final repo = ref.read(settingsRepositoryProvider);
+    await repo.setColorIndex(index);
+    state = index;
   }
 }

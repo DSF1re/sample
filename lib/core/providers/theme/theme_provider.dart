@@ -5,3 +5,7 @@ import 'package:todo/core/providers/theme/theme_notifier.dart';
 final themeNotifierProvider = NotifierProvider<ThemeNotifier, ThemeMode>(
   ThemeNotifier.new,
 );
+
+final colorIndexProvider = NotifierProvider<ColorNotifier, int>(
+  ColorNotifier.new,
+);
